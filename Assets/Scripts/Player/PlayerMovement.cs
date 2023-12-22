@@ -4,15 +4,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : Singleton<PlayerMovement> 
 {
-    [SerializeField] private float _defaultWalkingSpeed;
+    [SerializeField] private float _defaultWalkingSpeed = 30f;
+    [SerializeField, Range(0f, 1f)] private float _jumpForce = -0.3f;
+    [SerializeField] private float _gravityGrowth = -80f;
 
+    private float _verticalVelocity;
+    private Vector2 _horizontalVelocity;
+    private Vector3 _velocity;
     private Vector2 _currentMovementInput;
-    private Vector3 _playerVelocity;
 
     private CharacterController _characterController;
     // private playerStateMachine _playerStateMachine;
     private PlayerInput _playerInput;
     private InputAction _movementAction;
+    private InputAction _jumpAction;
     
     public float defaultWalkingSpeed { get => _defaultWalkingSpeed; private set => _defaultWalkingSpeed = value; }
 
@@ -26,33 +31,47 @@ public class PlayerMovement : Singleton<PlayerMovement>
     {
         _playerInput = GetComponent<PlayerInput>();
         _movementAction = _playerInput.actions["Movement"];
+        _jumpAction = _playerInput.actions["Jump"];
+
+        _jumpAction.performed += Jump;
     }
 
     private void Update()
     {
         // if ((_playerStateMachine.state is PlayerDeadState) == false) ...
         _currentMovementInput = _movementAction.ReadValue<Vector2>();
-        if (_currentMovementInput != Vector2.zero)
-        {
-            ProcessMovement(_currentMovementInput); // Calculate movement
-        }
-        else
-        {
-            _playerVelocity = new Vector3(0, _playerVelocity.y, 0);
-        }
+
+        ProcessHorizontalMovement(_currentMovementInput);
+        
+        ProcessGravity();
     }
 
     private void FixedUpdate()
     {
-        _characterController.Move(_playerVelocity); // Apply movement
+        _velocity = new Vector3(_horizontalVelocity.x, _verticalVelocity, _horizontalVelocity.y);
+        _characterController.Move(_velocity); // Apply movement
     }
 
-    private void ProcessMovement(Vector2 input)
+    private void ProcessHorizontalMovement(Vector2 input)
     {
         // if ((_playerStateMachine.state is PlayerDeadState) == false) ...
-        var movementVector = Vector3.zero;
-        movementVector.x = input.x;
-        movementVector.z = input.y;
-        _playerVelocity = transform.TransformDirection(movementVector) * defaultWalkingSpeed * Time.deltaTime;
+        var movementVector = new Vector3(input.x, input.y);
+        _horizontalVelocity = transform.TransformDirection(movementVector) * defaultWalkingSpeed * Time.deltaTime;      
+    }
+
+    private void ProcessGravity()
+    {
+        if (_characterController.isGrounded == false)
+        {
+            _verticalVelocity += _gravityGrowth * Time.deltaTime * Time.deltaTime;
+        }
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        if (_characterController.isGrounded)
+        {
+            _verticalVelocity = _jumpForce;
+        }
     }
 }
