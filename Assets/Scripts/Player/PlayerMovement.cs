@@ -55,8 +55,11 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private void ProcessHorizontalMovement(Vector2 input)
     {
         // if ((_playerStateMachine.state is PlayerDeadState) == false) ...
-        var movementVector = new Vector3(input.x, input.y);
-        _horizontalVelocity = transform.TransformDirection(movementVector) * defaultWalkingSpeed * Time.deltaTime;      
+        var movementX = input.x * transform.right;
+        var movementZ = input.y * transform.forward;
+        var direction3 = (movementX + movementZ).normalized;
+        var direction2 = new Vector2(direction3.x, direction3.z);
+        _horizontalVelocity = direction2 * defaultWalkingSpeed * Time.deltaTime;      
     }
 
     private void ProcessGravity()

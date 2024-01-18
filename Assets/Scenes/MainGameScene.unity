@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 1102620581}
   - component: {fileID: 1102620585}
   - component: {fileID: 1102620586}
+  - component: {fileID: 1102620587}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -862,7 +863,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0
+  m_StepOffset: 0.5
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -977,6 +978,19 @@ MonoBehaviour:
   m_DefaultActionMap: OnFoot
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1102620587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102620580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc6bd6b254fcb047b8145fa593e48ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mouseSensitivity: 10
 --- !u!1 &1214895481
 GameObject:
   m_ObjectHideFlags: 0
