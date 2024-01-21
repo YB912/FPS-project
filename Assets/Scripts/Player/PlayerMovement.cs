@@ -14,7 +14,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private Vector2 _currentMovementInput;
 
     private CharacterController _characterController;
-    // private playerStateMachine _playerStateMachine;
     private PlayerInput _playerInput;
     private InputAction _movementAction;
     private InputAction _jumpAction;
