@@ -4,14 +4,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerVerticalMovement : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] private float _jumpForce = -0.3f;
-    [SerializeField] private float _gravityGrowth = -80f;
+    [SerializeField, Range(0f, 1f)] private float _jumpForce = 0.5f;
+    [SerializeField] private float _gravityGrowth = -200f;
+
+    private float _verticalVelocity;
 
     private CharacterController _characterController;
     private PlayerInput _playerInput;
     private InputAction _jumpAction;
 
-    public float _verticalVelocity { get; private set; }
+    public float verticalVelocity
+    {
+        get
+        {
+            ProcessGravity();
+            return _verticalVelocity;
+        }
+        set { _verticalVelocity = value; }
+    }
 
     private void Start()
     {
@@ -22,7 +32,7 @@ public class PlayerVerticalMovement : MonoBehaviour
         _jumpAction.performed += Jump;
     }
 
-    public void ProcessGravity()
+    private void ProcessGravity()
     {
         if (_characterController.isGrounded == false)
         {

@@ -1,10 +1,12 @@
 
 
+using UnityEngine;
+
 public abstract class State : IState
 {
-    public IStateMachine stateMachine { get; protected set; }
+    public StateMachine stateMachine { get; protected set; }
 
-    public State(IStateMachine stateMachine)
+    public State(StateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
     }
@@ -16,4 +18,9 @@ public abstract class State : IState
     public abstract void OnExit();
 
     public abstract void OnEnter();
+
+    protected T GetComponent<T>()
+    {
+        return stateMachine.GetComponent<T>();
+    }
 }

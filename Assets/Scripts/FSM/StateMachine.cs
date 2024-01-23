@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public abstract class StateMachine : IStateMachine
+public abstract class StateMachine : MonoBehaviour, IStateMachine
 {
-    public IState currentState { get; private set; }
+    public IState currentState { get; protected set; }
 
     public virtual void ChangeState(IState newState)
     {
@@ -11,7 +11,4 @@ public abstract class StateMachine : IStateMachine
         currentState = newState;
         currentState.OnEnter();
     }
-    public abstract void Update();
-
-    public abstract void FixedUpdate();
 }

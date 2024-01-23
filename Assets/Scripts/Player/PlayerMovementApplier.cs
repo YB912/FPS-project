@@ -1,8 +1,8 @@
 
 using UnityEngine;
 
-public class PlayerMovementApplier : MonoBehaviour
-{
+public class PlayerMovementApplier
+{ 
     private Vector3 _velocity;
 
     private CharacterController _characterController;
@@ -10,22 +10,20 @@ public class PlayerMovementApplier : MonoBehaviour
     private PlayerHorizontalMovement _playerHorizontalMovement;
     private PlayerVerticalMovement _playerVerticalMovement;
 
-    private void Start()
+    public PlayerMovementApplier(PlayerStateMachine playerStateMachine)
     {
-        _characterController = GetComponent<CharacterController>();
+        _characterController = playerStateMachine.GetComponent<CharacterController>();
 
-        _playerHorizontalMovement = GetComponent<PlayerHorizontalMovement>();
-        _playerVerticalMovement = GetComponent<PlayerVerticalMovement>();
+        _playerHorizontalMovement = playerStateMachine.GetComponent<PlayerHorizontalMovement>();
+        _playerVerticalMovement = playerStateMachine.GetComponent<PlayerVerticalMovement>();
     }
 
     public void ApplyMovement()
     {
-        _playerHorizontalMovement.ProcessHorizontalMovement();
-        _playerVerticalMovement.ProcessGravity();
-
+        // Combine and apply horizontal and vertical velocities
         _velocity = new Vector3(_playerHorizontalMovement.horizontalVelocity.x,
-                                _playerVerticalMovement._verticalVelocity,
+                                _playerVerticalMovement.verticalVelocity,
                                 _playerHorizontalMovement.horizontalVelocity.y);
-        _characterController.Move(_velocity); // Apply movement
+        _characterController.Move(_velocity);
     }
 }

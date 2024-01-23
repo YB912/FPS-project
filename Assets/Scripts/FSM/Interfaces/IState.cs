@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IState
 {
-    public IStateMachine stateMachine { get; }
+    public StateMachine stateMachine { get; }
 
     public void Update();
 
