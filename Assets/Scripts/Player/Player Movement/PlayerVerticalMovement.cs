@@ -2,13 +2,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerVerticalMovement : MonoBehaviour
+public class PlayerVerticalMovement
 {
-    [SerializeField, Range(0f, 1f)] private float _jumpForce = 0.5f;
-    [SerializeField] private float _gravityGrowth = -200f;
-
     private float _verticalVelocity;
 
+    private PlayerInfo _playerInfo;
     private CharacterController _characterController;
     private PlayerInput _playerInput;
     private InputAction _jumpAction;
@@ -23,10 +21,11 @@ public class PlayerVerticalMovement : MonoBehaviour
         set { _verticalVelocity = value; }
     }
 
-    private void Start()
+    public PlayerVerticalMovement(PlayerStateMachine stateMachine)
     {
-        _characterController = GetComponent<CharacterController>();
-        _playerInput = GetComponent<PlayerInput>();
+        _playerInfo = stateMachine.playerInfo;
+        _characterController = stateMachine.GetComponent<CharacterController>();
+        _playerInput = stateMachine.GetComponent<PlayerInput>();
         _jumpAction = _playerInput.actions["Jump"];
 
         _jumpAction.performed += Jump;
@@ -36,7 +35,7 @@ public class PlayerVerticalMovement : MonoBehaviour
     {
         if (_characterController.isGrounded == false)
         {
-            _verticalVelocity += _gravityGrowth * Time.deltaTime * Time.deltaTime;
+            _verticalVelocity += _playerInfo.gravityGrowth * Time.deltaTime * Time.deltaTime;
         }
     }
 
@@ -44,7 +43,7 @@ public class PlayerVerticalMovement : MonoBehaviour
     {
         if (_characterController.isGrounded)
         {
-            _verticalVelocity = _jumpForce;
+            _verticalVelocity = _playerInfo.jumpForce;
         }
     }
 }

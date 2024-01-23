@@ -2,11 +2,15 @@
 
 public class PlayerStateMachine : StateMachine
 {
-    public PlayerMovementApplier playerMovement {  get; private set; }
+    public PlayerInfo playerInfo { get; private set; }
+    public PlayerMovementHandler playerMovement {  get; private set; }
+    public PlayerLookHandler playerLook {  get; private set; }
     private void Start()
     {
         currentState = new PlayerLocomotionState(this);
-        playerMovement = new PlayerMovementApplier(this);
+        playerInfo = GetComponent<PlayerInfo>();
+        playerMovement = new PlayerMovementHandler(this);
+        playerLook = new PlayerLookHandler(this);
     }
 
     private void Update()
