@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_Controller : MonoBehaviour
 {
-    public GameObject _settingPanel, _exitButton, _audioSlider;
+    public GameObject _settingPanel, _exitButton, _audioSlider, _exitButton2, _aboutUsPanel;
     public AudioSource _audioSource;
     private bool _isPlaying = false;
 
@@ -32,18 +32,19 @@ public class UI_Controller : MonoBehaviour
     }
     public void AboutUsButton()
     {
-
+        _exitButton2.SetActive(true);
+        _aboutUsPanel.SetActive(true);
     }
     public void ExitButton()
     {
         _exitButton.SetActive(false);
         _settingPanel.SetActive(false);
     }
-    //public void ExitButton2()
-    //{
-    //    _exitButton.SetActive(false);
-    //    _settingPanel.SetActive(false);
-    //}
+    public void ExitButton2()
+    {
+        _exitButton2.SetActive(false);
+        _aboutUsPanel.SetActive(false);
+    }
 
     public void AudioButton()
     {
