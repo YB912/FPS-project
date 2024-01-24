@@ -13,6 +13,8 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField, Range(8f, 20f)] private float _fireRate = 1f;
     [SerializeField] private float _gunRange = 100f;
 
+    [SerializeField] private GameObject _bulletHolePrefab;
+
     public float mouseSensitivity { get => _mouseSensitivity; }
 
     public float defaultWalkingSpeed { get => _defaultWalkingSpeed; }
@@ -22,4 +24,6 @@ public class PlayerInfo : MonoBehaviour
 
     public float fireRate { get => _fireRate; }
     public float gunRange { get => _gunRange; }
+
+    public GameObject bulletHolePrefab { get => _bulletHolePrefab; }
 }
