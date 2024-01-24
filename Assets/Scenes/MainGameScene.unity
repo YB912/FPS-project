@@ -988,9 +988,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseSensitivity: 100
-  _defaultWalkingSpeed: 10
-  _jumpForce: 0.3
+  _defaultWalkingSpeed: 30
+  _jumpForce: 0.5
   _gravityGrowth: -200
+  _fireRate: 10
+  _gunRange: 100
 --- !u!1 &1214895481
 GameObject:
   m_ObjectHideFlags: 0

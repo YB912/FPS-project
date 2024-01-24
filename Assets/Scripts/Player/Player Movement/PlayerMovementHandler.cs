@@ -28,15 +28,5 @@ public class PlayerMovementHandler
     public void Apply()
     {
         _characterController.Move(_velocity);
-        //Debug.Log(_velocity);
     }
-
-    //public void HandleMovement()
-    //{
-    //    // Combine and apply horizontal and vertical velocities
-    //    _velocity = new Vector3(_playerHorizontalMovement.horizontalVelocity.x,
-    //                            _playerVerticalMovement.verticalVelocity,
-    //                            _playerHorizontalMovement.horizontalVelocity.y);
-    //    _characterController.Move(_velocity);
-    //}
 }
