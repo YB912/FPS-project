@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,9 @@ public class PlayerShootingHandler
     private Transform _cameraTransform;
     private PlayerInput _playerInput;
     private InputAction _shootAction;
+    private MuzzleFlash _muzzleFlash;
 
+    public static event Action OnShoot;
 
     public PlayerShootingHandler(PlayerStateMachine stateMachine)
     {
@@ -42,6 +45,7 @@ public class PlayerShootingHandler
         {
             Debug.Log($"{hit.transform.name} was shot.");
         }
+        OnShoot?.Invoke();
         _firingTimer = 0;
     }
 
