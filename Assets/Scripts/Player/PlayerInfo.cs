@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour
+public class PlayerInfo : MonoBehaviour, IDamageable
 {
     [SerializeField] private float _mouseSensitivity = 10f;
 
@@ -12,6 +12,10 @@ public class PlayerInfo : MonoBehaviour
 
     [SerializeField, Range(8f, 20f)] private float _fireRate = 1f;
     [SerializeField] private float _gunRange = 100f;
+
+    [SerializeField] private float _damage;
+
+    [SerializeField] private float _maximumHealth;
 
     [SerializeField] private GameObject _bulletHolePrefab;
 
@@ -25,5 +29,21 @@ public class PlayerInfo : MonoBehaviour
     public float fireRate { get => _fireRate; }
     public float gunRange { get => _gunRange; }
 
+    public float damage { get => _damage; }
+    public float maximumHealth { get => _maximumHealth; }
+
+    public float currentHealth { get; set; }
+
     public GameObject bulletHolePrefab { get => _bulletHolePrefab; }
+
+    private void Start()
+    {
+        currentHealth = maximumHealth;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        Debug.Log($"Player took {damage} amount of damage, HP left: {currentHealth}");
+    }
 }

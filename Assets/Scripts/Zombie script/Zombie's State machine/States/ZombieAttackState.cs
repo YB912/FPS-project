@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class ZombieAttackState : ZombieState
 {
+    private float _attackTimer;
+
     private Transform _transform;
-    private Transform _playerTransform;
     private Transform _playerFeet;
+
     public ZombieAttackState(StateMachine stateMachine) : base(stateMachine)
     {
         _transform = stateMachine.transform;
-        _playerTransform = zombieStateMachine.playerInfo.transform;
         _playerFeet = GameObject.FindGameObjectWithTag("PlayerFeet").GetComponent<Transform>();
     }
 
     public override void OnEnter()
     {
         zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Attacking", true);
+        _attackTimer = 0;
     }
 
     public override void Update()
@@ -24,6 +26,14 @@ public class ZombieAttackState : ZombieState
         if ( distance >= zombieStateMachine.zombieInfo.attackDistance)
         {
             stateMachine.ChangeState(new ZombieFollowingState(stateMachine));
+        }
+
+        // Dealing damage once every [attackSpeed] seconds
+        _attackTimer += Time.deltaTime;
+        if (_attackTimer >= zombieStateMachine.zombieInfo.attackSpeed)
+        {
+            zombieStateMachine.playerInfo.TakeDamage(zombieStateMachine.zombieInfo.damage);
+            _attackTimer = 0;
         }
     }
 

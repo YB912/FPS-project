@@ -48,6 +48,10 @@ public class PlayerShootingHandler
                                                     Quaternion.LookRotation(-hit.normal),
                                                     GameObject.FindWithTag("BulletHoleHolder").transform);
             }
+            else if (hit.transform.tag == "Zombie")
+            {
+                hit.transform.gameObject.GetComponent<ZombieInfo>().TakeDamage(_playerInfo.damage);
+            }
         }
         OnShoot?.Invoke();
         _firingTimer = 0;
