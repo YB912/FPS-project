@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    private void Awake()
+    {
+        AudioManager.InitializDictionary();
+    }
     // Start is called before the first frame update
     void Start()
     {
