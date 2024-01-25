@@ -35,7 +35,7 @@ public class PlayerVerticalMovement
     {
         if (_characterController.isGrounded == false)
         {
-            _verticalVelocity += _playerInfo.gravityGrowth * Time.deltaTime * Time.deltaTime;
+            _verticalVelocity += _playerInfo.gravityGrowth * Time.deltaTime;
         }
     }
 

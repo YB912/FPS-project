@@ -32,15 +32,15 @@ public class PlayerLookHandler
     }
 
     public void Apply()
-    {
-        _playerTransform.Rotate(Vector3.up, _horizontalRotation);
+    {      
+        _playerTransform.localRotation = Quaternion.Euler(0, _horizontalRotation, 0); 
         _cameraTransform.localRotation = Quaternion.Euler(_verticalRotation, 0, 0);
     }
 
     private void ProcessRotations(Vector2 input)
     {
-        _horizontalRotation = input.x * _playerInfo.mouseSensitivity * Time.deltaTime;
+        _horizontalRotation += input.x * _playerInfo.mouseSensitivity * Time.deltaTime;
         _verticalRotation -= input.y * (_playerInfo.mouseSensitivity / 2) * Time.deltaTime;
-        _verticalRotation = Mathf.Clamp(_verticalRotation, -70, 70);
+        _verticalRotation = Mathf.Clamp(_verticalRotation, -80, 80);
     }
 }

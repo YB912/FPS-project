@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField] private float _mouseSensitivity = 100f;
+    [SerializeField] private float _mouseSensitivity = 10f;
 
-    [SerializeField] private float _defaultWalkingSpeed = 10f;
+    [SerializeField] private float _defaultWalkingSpeed = 30f;
 
-    [SerializeField, Range(0f, 1f)] private float _jumpForce = 0.7f;
-    [SerializeField] private float _gravityGrowth = -100f;
+    [SerializeField, Range(0f, 10f)] private float _jumpForce = 1f;
+    [SerializeField] private float _gravityGrowth = -20f;
 
     [SerializeField, Range(8f, 20f)] private float _fireRate = 1f;
     [SerializeField] private float _gunRange = 100f;

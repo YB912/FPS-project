@@ -26,7 +26,7 @@ public class PlayerMovementHandler
     }
 
     public void Apply()
-    {
+    { 
         _characterController.Move(_velocity);
     }
 }
