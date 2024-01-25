@@ -10,6 +10,10 @@ TagManager:
   - BulletSpawn
   - Zombie
   - PlayerFeet
+  - Weapon
+  - Floor
+  - Wall
+  - BulletHoleHolder
   layers:
   - Default
   - TransparentFX

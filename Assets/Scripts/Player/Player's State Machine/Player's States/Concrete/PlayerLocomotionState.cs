@@ -21,6 +21,7 @@ public class PlayerLocomotionState : PlayerState
         }
         playerStateMachine.playerMovement.Update();
         playerStateMachine.playerLook.Update();
+        playerStateMachine.playerShooting.Update();
     }
 
     public override void FixedUpdate()

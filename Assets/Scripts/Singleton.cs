@@ -4,13 +4,13 @@ using UnityEngine;
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     #region Private Fields
-    protected T _instance;
+    protected static T _instance;
 
     // Making the class thread-safe, eliminating the creation chance of multiple instances by multiple threads
     private static readonly object _synchronizationObject = new object();
     #endregion
 
-    public T instance
+    public static T instance
     {
         get
         {
