@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _zombieSpeed: 10
+  _zombieSpeed: 1
   _attackDestance: 2
   _cam: {fileID: 0}
   _zombieAnim: {fileID: 1343904091}
