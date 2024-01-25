@@ -2,47 +2,45 @@ using UnityEngine;
 
 public class ZombieFollowingState : ZombieState
 {
-    private Vector3 _playerInfo;
-    private Vector3 _thisZombie;
+    private Transform _transform;
+    private Transform _playerTransform;
+    private Transform _playerFeet;
+
     public ZombieFollowingState(StateMachine stateMachine) : base(stateMachine)
     {
-
+        _transform = stateMachine.transform;
+        _playerTransform = zombieStateMachine.playerInfo.transform;
+        _playerFeet = GameObject.FindGameObjectWithTag("PlayerFeet").GetComponent<Transform>();
     }
 
     public override void OnEnter()
     {
-
+        zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Running", true);
     }
 
     public override void Update()
     {
-        float distance = Vector3.Distance(zombieStateMachine.zombieInfo.transform.position, zombieStateMachine.zombieInfo.player.transform.position);
-        if (distance < zombieStateMachine.zombieInfo.attackDestance)
+        float distance = Vector3.Distance(_transform.position, _playerFeet.position);
+        if (distance < zombieStateMachine.zombieInfo.attackDistance)
         {
+            zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Attacking", true);
             stateMachine.ChangeState(new ZombieAttackState(stateMachine));
-            zombieStateMachine.zombieInfo.zombieAnim.SetBool("Attaking", true);
-
         }
-        _playerInfo = zombieStateMachine.zombieInfo.player.transform.position;
-        _thisZombie = zombieStateMachine.zombieInfo.transform.position;
-
     }
 
     public override void FixedUpdate()
     {
-        Vector3 targetPosition = Vector3.MoveTowards(_thisZombie, _playerInfo, zombieStateMachine.zombieInfo.zombieSpeed * Time.deltaTime);
+        Vector3 targetPosition = Vector3.MoveTowards(_transform.position, _playerTransform.position, zombieStateMachine.zombieInfo.zombieSpeed * Time.deltaTime);
         targetPosition.y = 0;
 
         zombieStateMachine.zombieInfo.transform.position = targetPosition;
 
-        zombieStateMachine.zombieInfo.LookAt(zombieStateMachine.zombieInfo.player.transform.position);
-
-
-
+        // Fixes zombie tilting when player jumps
+        zombieStateMachine.zombieInfo.LookAt(new Vector3(_playerTransform.position.x, _transform.position.y, _playerTransform.position.z));
     }
 
     public override void OnExit()
     {
-
+        zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Running", false);
     }
 }
