@@ -50,7 +50,7 @@ public class PlayerShootingHandler
             }
             else if (hit.transform.tag == "Zombie")
             {
-                hit.transform.gameObject.GetComponent<ZombieInfo>().TakeDamage(_playerInfo.damage);
+                hit.transform.gameObject.GetComponent<ZombieInfo>().TakeDamage(_playerInfo.gunDamage);
             }
         }
         OnShoot?.Invoke();

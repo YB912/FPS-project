@@ -13,7 +13,8 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
     [SerializeField, Range(8f, 20f)] private float _fireRate = 1f;
     [SerializeField] private float _gunRange = 100f;
 
-    [SerializeField] private float _damage;
+    [SerializeField] private float _gunDamage;
+    [SerializeField] private float _jumpDamage;
 
     [SerializeField] private float _maximumHealth;
 
@@ -29,7 +30,9 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
     public float fireRate { get => _fireRate; }
     public float gunRange { get => _gunRange; }
 
-    public float damage { get => _damage; }
+    public float gunDamage { get => _gunDamage; }
+    public float jumpDamage { get => _jumpDamage; }
+
     public float maximumHealth { get => _maximumHealth; }
 
     public float currentHealth { get; set; }

@@ -1409,7 +1409,8 @@ MonoBehaviour:
   _gravityGrowth: -1
   _fireRate: 10
   _gunRange: 100
-  _damage: 20
+  _gunDamage: 20
+  _jumpDamage: 30
   _maximumHealth: 100
   _bulletHolePrefab: {fileID: 7895531159758039455, guid: 262e908323e391c4095024d2e14c686e, type: 3}
 --- !u!1 &1155605687

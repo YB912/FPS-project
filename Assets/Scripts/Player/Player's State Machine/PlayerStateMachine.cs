@@ -1,4 +1,5 @@
 
+using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -26,4 +27,12 @@ public class PlayerStateMachine : StateMachine
         currentState.FixedUpdate();
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (currentState is PlayerAirborneState)
+        {
+            var airborneState = currentState as PlayerAirborneState;
+            airborneState.OnControllerCollisionHit(hit);
+        }
+    }
 }

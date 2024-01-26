@@ -34,4 +34,12 @@ public class PlayerAirborneState : PlayerState
     {
 
     }
+
+    public void OnControllerCollisionHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.GetComponent<ZombieInfo>() != null)
+        {
+            hit.gameObject.GetComponent<ZombieInfo>().TakeDamage(PlayerInfo.instance.jumpDamage);
+        }
+    }
 }
