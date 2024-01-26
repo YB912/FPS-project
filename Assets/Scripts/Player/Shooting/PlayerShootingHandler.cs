@@ -54,6 +54,8 @@ public class PlayerShootingHandler
             }
         }
         OnShoot?.Invoke();
+        AudioManager.instance.PlaySound(AudioManager.Type.SHOOTING, PlayerInfo.instance.GetComponent<AudioSource>(), 0.05f);
+
         _firingTimer = 0;
     }
 

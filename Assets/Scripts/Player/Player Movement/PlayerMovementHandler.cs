@@ -2,13 +2,17 @@
 using UnityEngine;
 
 public class PlayerMovementHandler
-{ 
+{
+    private float _runSoundTimer;
+
     private Vector3 _velocity;
 
     private CharacterController _characterController;
 
     private PlayerHorizontalMovement _playerHorizontalMovement;
     private PlayerVerticalMovement _playerVerticalMovement;
+
+    public Vector3 velocity { get => _velocity; }
 
     public PlayerMovementHandler(PlayerStateMachine playerStateMachine)
     {

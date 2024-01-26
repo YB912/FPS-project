@@ -40,6 +40,7 @@ public class Spawner : MonoBehaviour
                 zombie.transform.LookAt(new Vector3(_playerTransform.position.x, 0, _playerTransform.position.z));
                 _zombiesAlive++;
             }
+            AudioManager.instance.PlaySound(AudioManager.Type.SPAWNER, PlayerInfo.instance.GetComponent<AudioSource>(), 1);
         }
     }
 }
