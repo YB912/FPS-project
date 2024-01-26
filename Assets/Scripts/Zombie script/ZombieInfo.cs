@@ -38,6 +38,6 @@ public class ZombieInfo : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        Debug.Log($"Zombie {gameObject} took {damage} amount of damage, HP left: {currentHealth}");
+        // Debug.Log($"Zombie {gameObject} took {damage} amount of damage, HP left: {currentHealth}");
     }
 }
