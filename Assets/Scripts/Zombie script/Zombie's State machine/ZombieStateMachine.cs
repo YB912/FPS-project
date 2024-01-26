@@ -18,12 +18,17 @@ public class ZombieStateMachine : StateMachine
         zombieInfo = GetComponent<ZombieInfo>();
     }
 
+    private void OnEnable()
+    {
+        //ChangeState(new ZombieFollowingState(this));
+    }
+
     private void Update()
     {
         currentState.Update();
 
         _randomNoiseTimer -= Time.deltaTime;
-        if ( _randomNoiseTimer < 0 )
+        if ( _randomNoiseTimer < 0 && currentState is ZombieDeathState == false)
         {
             AudioManager.instance.PlaySound(AudioManager.Type.ZOMBIE_RANDOM, GetComponent<AudioSource>(), 1);
             _randomNoiseTimer = Random.Range(10, 30);

@@ -27,6 +27,10 @@ public class ZombieAttackState : ZombieState
         {
             stateMachine.ChangeState(new ZombieFollowingState(stateMachine));
         }
+        else if (zombieStateMachine.zombieInfo.currentHealth == 0)
+        {
+            stateMachine.ChangeState(new ZombieDeathState(stateMachine));
+        }
 
         // Dealing damage once every [attackSpeed] seconds
         _attackTimer += Time.deltaTime;
