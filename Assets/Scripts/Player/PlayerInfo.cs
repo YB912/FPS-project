@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class PlayerInfo : MonoBehaviour, IDamageable
+public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
 {
     [SerializeField] private float _mouseSensitivity = 10f;
 

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         AudioManager.InitializDictionary();
     }
     // Start is called before the first frame update
