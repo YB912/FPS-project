@@ -20,6 +20,8 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
 
     [SerializeField] private GameObject _bulletHolePrefab;
 
+    public HealthBar _playerHealthBar = new HealthBar();
+
     public float mouseSensitivity { get => _mouseSensitivity; }
 
     public float defaultWalkingSpeed { get => _defaultWalkingSpeed; }
@@ -47,6 +49,8 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        Debug.Log($"Player took {damage} amount of damage, HP left: {currentHealth}");
+
+        _playerHealthBar.SetHealth(currentHealth);
+        //Debug.Log($"Player took {damage} amount of damage, HP left: {currentHealth}");
     }
 }
