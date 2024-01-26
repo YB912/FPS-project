@@ -963,8 +963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-  _spawningTime: 30
-  _maximumTotalZombies: 100
+  _spawningTime: 10
+  _maximumTotalZombies: 60
   _maximumNewZombies: 20
   _spawningAmountCurve:
     serializedVersion: 2

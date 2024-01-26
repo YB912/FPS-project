@@ -24,7 +24,7 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
 
     [SerializeField] private GameObject _bulletHolePrefab;
 
-    public HealthBar _playerHealthBar = new HealthBar();
+    [SerializeField] private HealthBar _playerHealthBar;
 
     public float mouseSensitivity { get => _mouseSensitivity; }
 
@@ -58,6 +58,9 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         _playerHealthBar.SetHealth(currentHealth);
-        AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_HURT, GetComponent<AudioSource>(), 1f);
+        if (currentHealth != 0)
+        {
+            AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_HURT, GetComponent<AudioSource>(), 1f);
+        }
     }
 }

@@ -11,6 +11,8 @@ public class ZombieInfo : MonoBehaviour, IDamageable
 
     [SerializeField] private float _maximumHealth;
 
+    [SerializeField] private float _despawnTime;
+
     public float zombieSpeed { get => _zombieSpeed; }
 
     public float attackDistance { get => _attackDistance; }
@@ -18,6 +20,9 @@ public class ZombieInfo : MonoBehaviour, IDamageable
     public float damage { get => _damage; }
 
     public float maximumHealth { get => _maximumHealth; }
+
+    public float despawnTime { get => _despawnTime; }
+
     public float currentHealth { get; set; }
 
     private void Start()

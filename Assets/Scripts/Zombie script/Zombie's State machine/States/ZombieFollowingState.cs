@@ -23,8 +23,11 @@ public class ZombieFollowingState : ZombieState
         float distance = Vector3.Distance(_transform.position, _playerFeet.position);
         if (distance < zombieStateMachine.zombieInfo.attackDistance)
         {
-            zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Attacking", true);
             stateMachine.ChangeState(new ZombieAttackState(stateMachine));
+        }
+        else if (zombieStateMachine.zombieInfo.currentHealth == 0)
+        {
+            stateMachine.ChangeState(new ZombieDeathState(stateMachine));
         }
     }
 

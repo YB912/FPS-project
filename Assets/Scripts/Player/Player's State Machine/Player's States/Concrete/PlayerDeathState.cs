@@ -15,6 +15,7 @@ public class PlayerDeathState : PlayerState
         //Time.timeScale = 100f;
 
         //SceneManager.LoadScene(2);
+        AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_DEATH, GetComponent<AudioSource>(), 1);
     }
 
     public override void Update()

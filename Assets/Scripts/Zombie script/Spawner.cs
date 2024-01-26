@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : Singleton<Spawner>
 {
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private float _spawningTime = 10;
@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     private Transform _playerTransform;
     private Transform _zombieHolder;
 
-    public int zombiesAlive { get; set; }
+    public int zombiesAlive { get => _zombiesAlive; set => _zombiesAlive = value; }
 
     private void Start()
     {
