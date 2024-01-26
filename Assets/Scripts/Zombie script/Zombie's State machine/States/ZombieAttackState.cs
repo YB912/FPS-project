@@ -17,6 +17,7 @@ public class ZombieAttackState : ZombieState
     public override void OnEnter()
     {
         zombieStateMachine.zombieInfo.GetComponent<Animator>().SetBool("Attacking", true);
+        AudioManager.instance.PlaySound(AudioManager.Type.ZOMBIE_ATTACK, zombieStateMachine.GetComponent<AudioSource>(), 1);
         _attackTimer = 0;
     }
 

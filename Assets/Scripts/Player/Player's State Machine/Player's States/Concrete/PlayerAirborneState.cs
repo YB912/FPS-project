@@ -40,6 +40,7 @@ public class PlayerAirborneState : PlayerState
         if (hit.gameObject.GetComponent<ZombieInfo>() != null)
         {
             hit.gameObject.GetComponent<ZombieInfo>().TakeDamage(PlayerInfo.instance.jumpDamage);
+            AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_KICK, playerStateMachine.GetComponent<AudioSource>(), 1);
         }
     }
 }

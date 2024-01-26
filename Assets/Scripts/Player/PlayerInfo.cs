@@ -18,6 +18,10 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
 
     [SerializeField] private float _maximumHealth;
 
+    [SerializeField] private float _stepInterval;
+
+    [SerializeField] private float _kickCooldown;
+
     [SerializeField] private GameObject _bulletHolePrefab;
 
     public float mouseSensitivity { get => _mouseSensitivity; }
@@ -35,6 +39,10 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
 
     public float maximumHealth { get => _maximumHealth; }
 
+    public float stepInterval { get => _stepInterval; }
+
+    public float kickCooldown { get => _kickCooldown; }
+
     public float currentHealth { get; set; }
 
     public GameObject bulletHolePrefab { get => _bulletHolePrefab; }
@@ -47,6 +55,7 @@ public class PlayerInfo : Singleton<PlayerInfo>, IDamageable
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
+        AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_HURT, GetComponent<AudioSource>(), 1f);
         Debug.Log($"Player took {damage} amount of damage, HP left: {currentHealth}");
     }
 }

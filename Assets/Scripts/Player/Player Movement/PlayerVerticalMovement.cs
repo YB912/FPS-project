@@ -44,6 +44,7 @@ public class PlayerVerticalMovement
         if (_characterController.isGrounded)
         {
             _verticalVelocity = _playerInfo.jumpForce;
+            AudioManager.instance.PlaySound(AudioManager.Type.PLAYER_JUMP, PlayerInfo.instance.GetComponent<AudioSource>(), 1);
         }
     }
 }

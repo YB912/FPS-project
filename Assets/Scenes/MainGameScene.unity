@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
-  _spawningTime: 1
+  _spawningTime: 30
   _maximumTotalZombies: 100
   _maximumNewZombies: 20
   _spawningAmountCurve:
@@ -1413,6 +1413,8 @@ MonoBehaviour:
   _gunDamage: 20
   _jumpDamage: 30
   _maximumHealth: 100
+  _stepInterval: 0.6
+  _kickCooldown: 0.4
   _bulletHolePrefab: {fileID: 7895531159758039455, guid: 262e908323e391c4095024d2e14c686e, type: 3}
 --- !u!82 &1102620592
 AudioSource:
@@ -1425,7 +1427,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1470,7 +1472,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1577,10 +1579,8 @@ MonoBehaviour:
     type: 9
   - clip: {fileID: 8300000, guid: dbc32fd9a698df44d9a5f6566769c32f, type: 3}
     type: 10
-  - clip: {fileID: 8300000, guid: 68f790dbfa1f84670a70b81bd91a98e1, type: 3}
-    type: 11
   - clip: {fileID: 8300000, guid: 6394be07b27ccbf47a5d90882c0daef5, type: 3}
-    type: 12
+    type: 11
 --- !u!4 &1204166185 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8935376522760628317, guid: 04d556a78feb7214f95d5d79ed05972e, type: 3}
