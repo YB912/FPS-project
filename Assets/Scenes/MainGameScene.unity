@@ -1683,7 +1683,6 @@ Transform:
 --- !u!1 &1486046019
 GameObject:
   m_ObjectHideFlags: 0
-<<<<<<< HEAD
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1712,7 +1711,6 @@ Transform:
   m_Father: {fileID: 661509119}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
@@ -1803,7 +1801,6 @@ Transform:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
->>>>>>> death-states
 --- !u!1 &1750781032
 GameObject:
   m_ObjectHideFlags: 0
