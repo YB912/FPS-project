@@ -15,9 +15,16 @@ public class PlayerAirborneState : PlayerState
 
     public override void Update()
     {
+        //PlayerInfo player = new PlayerInfo();
+
         if (stateMachine.GetComponent<CharacterController>().isGrounded)
         {
             stateMachine.ChangeState(new PlayerLocomotionState(stateMachine));
+        }
+        else if (PlayerInfo.instance.currentHealth == 0)
+        {
+            stateMachine.ChangeState(new PlayerDeathState(stateMachine));
+
         }
         playerStateMachine.playerMovement.Update();
         playerStateMachine.playerLook.Update();
