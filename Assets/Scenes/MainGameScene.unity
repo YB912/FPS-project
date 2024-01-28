@@ -1713,7 +1713,7 @@ MonoBehaviour:
   _fireRate: 10
   _gunRange: 100
   _gunDamage: 20
-  _jumpDamage: 30
+  _jumpDamage: 40
   _maximumHealth: 100
   _stepInterval: 0.6
   _kickCooldown: 0.4

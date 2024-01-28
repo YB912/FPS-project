@@ -1861,9 +1861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3481f54d1bd7ef741a311dd026bd216e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zombieSpeed: 3
+  _zombieSpeed: 4
   _attackDistance: 2
-  _attackSpeed: 1
+  _attackSpeed: 0.5
   _damage: 10
   _maximumHealth: 80
   _despawnTime: 10
